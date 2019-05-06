@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 public class DragNDrop {
 public static void main(String[] args) throws InterruptedException {
 		
-		System.setProperty("webdriver.chrome.driver", "E:\\chromedriver_win32 (1)\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "E:\\chromedriver_win32\\chromedriver.exe");
 		ChromeDriver driver = new ChromeDriver();
 	 driver.get("https://jqueryui.com/droppable/");
 	 driver.switchTo().frame(0);
