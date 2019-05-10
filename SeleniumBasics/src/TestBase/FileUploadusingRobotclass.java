@@ -12,9 +12,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class FileUpload {
+public class FileUploadusingRobotclass {
 	
 public static void main(String[] args) throws InterruptedException, AWTException {
+	
+	
 	System.setProperty("webdriver.chrome.driver","E:\\chromedriver_win32\\chromedriver.exe");
 	ChromeDriver d1= new ChromeDriver();
     d1.get("https://dev.cricketsocial.net/");

@@ -13,9 +13,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RedbusWithRobotKeys {
 	public static void main(String[] args) throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", "E:\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver(); 
-       driver.get("https://www.redbus.in/");
+	System.setProperty("webdriver.chrome.driver", "E:\\chromedriver.exe");
+    WebDriver driver = new ChromeDriver(); 
+    driver.get("https://www.redbus.in/");
 	WebElement ele = driver.findElement(By.xpath("//input[@id='src']"));
 	ele.sendKeys("Chennai");
 	Thread.sleep(2000);
