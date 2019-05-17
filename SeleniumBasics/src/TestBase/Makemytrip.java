@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.xml.crypto.Data;
+
 import org.apache.bcel.generic.IFGT;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -19,39 +21,23 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import com.google.gson.JsonObject;
-
 public class Makemytrip {
 static WebDriver d1;
+private String departureDate=null;
+private String returnDate=null;
 	public static void main(String[] args) throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver","E:\\chromedriver_win32\\chromedriver.exe");
 		
-	ChromeOptions options = new ChromeOptions();
-		options.addArguments("--incognito");
-		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-		d1 = new ChromeDriver(capabilities);
-	//	d1 = new ChromeDriver();
-		d1.get("https://www.makemytrip.com/");
-		d1.manage().window().maximize();
-		d1.manage().deleteAllCookies();
-		d1.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-		d1.findElement(By.xpath("//a[@class='active makeFlex hrtlCenter column']")).click();
-		List<WebElement> li = d1.findElements(By.xpath("//ul//li//span[@class='tabsCircle appendRight5']"));
-		li.get(1).click();
 		
-		d1.findElement(By.xpath("//*[@id=\"fromCity\"]")).click();
-		WebElement fromandtocity= d1.findElement(By.xpath("//input[@type='text' and @aria-controls='react-autowhatever-1']"));
-		fromandtocity.sendKeys("Mumbai");
 	/*	WebElement li3 =d1.findElement(By.xpath("//ul//li[@id='react-autowhatever-1-section-0-item-0']"));
 		li3.click();*/
 		Thread.sleep(2000);
-		fromandtocity.sendKeys(Keys.TAB,"Bangalore");
+		//fromandtocity.sendKeys(Keys.TAB,"Bangalore");
 		
-		List<WebElement> li2 = d1.findElements(By.xpath("//ul[@class='react-autosuggest__suggestions-list']//li"));
+		/*List<WebElement> li2 = d1.findElements(By.xpath("//ul[@class='react-autosuggest__suggestions-list']//li"));
 		System.out.println(li2.size());
 		Actions a1 = new Actions(d1);
 		WebElement a2 = d1.findElement(By.xpath("//*[@id=\"departure\"]"));
@@ -98,16 +84,16 @@ static WebDriver d1;
 		int result1 = Integer.parseInt(s2);
 		
 		WebElement total = d1.findElement(By.xpath("//div[@class='splitVw-footer-total make_relative make_flex alC']//span[1]"));
-	String tot =total.getText();;
-	tot = tot.replaceAll(",", "");
-	tot= tot.split(" ")[1];
-	int finalresult = Integer.parseInt(tot);
+		String tot =total.getText();;
+		tot = tot.replaceAll(",", "");
+		tot= tot.split(" ")[1];
+		int finalresult = Integer.parseInt(tot);
 		
 		int totalvalue = result+result1;
 		Assert.assertEquals(totalvalue, finalresult, "Value is Mismatched");
 		
 		
-		
+*/		
 		
 		//d1.findElement(By.xpath("//*[@id=\"rt-domrt-jrny\"]/div[2]/div[2]/label/div[1]/span[1]")).click();
 		
@@ -155,11 +141,86 @@ static WebDriver d1;
 
 		}
 		*/
-	
+		
+		System.setProperty("webdriver.chrome.driver","E:\\chromedriver_win32\\chromedriver.exe");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--incognito");
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		d1 = new ChromeDriver(capabilities);
+		d1.get("https://www.makemytrip.com/");
+		d1.manage().window().maximize();
+		d1.manage().deleteAllCookies();
+		d1.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+		/*d1.findElement(By.xpath("//a[@class='active makeFlex hrtlCenter column']")).click();
+		String li ="//li[contains(text(),'%replacable%')]/child::span";
+		d1.findElement(get(li,"Round Trip")).click();
+	//	li.click();
+		d1.findElement(By.xpath("//*[@id=\"fromCity\"]")).click();
+		Actions a1 = new Actions(d1);
+		WebElement fromandtocity= d1.findElement(By.xpath("//input[@placeholder='From']"));
+		a1.moveToElement(fromandtocity).sendKeys("Mumbai").build().perform();
+		//fromandtocity.sendKeys("Mumbai");
+		WebElement autosuggestFirstOption= d1.findElement(By.xpath("//li[@class='react-autosuggest__suggestion react-autosuggest__suggestion--first']"));
+		toBeclickable(autosuggestFirstOption);
+		autosuggestFirstOption.click();
+		WebElement tocity=d1.findElement(By.xpath("//input[@placeholder='To']"));
+		tocity.sendKeys("Bangalore",Keys.);
+		Makemytrip date = new Makemytrip();
+		Date date1 =  new Date();
+		System.out.println(date1);
+		Calendar cal = Calendar.getInstance();
+		String[] rawDate=cal.getTime().toString().split(" ");
+		System.out.println(rawDate);
+		date.departureDate=rawDate[0]+" "+rawDate[1]+" "+rawDate[2]+" "+rawDate[5];
+		System.out.println(date.departureDate);
+		cal.add(Calendar.DATE, Integer.parseInt("7"));
+		rawDate=cal.getTime().toString().split(" ");
+		date.returnDate=rawDate[0]+" "+rawDate[1]+" "+rawDate[2]+" "+rawDate[5];
+		System.out.println(date.returnDate);
+		Thread.sleep(2000);*/
+		d1.get("https://www.makemytrip.com/flight/search?itinerary=DEL-BLR-17/05/2019_BLR-DEL-18/05/2019&tripType=R&paxType=A-1_C-0_I-0&intl=false&=&cabinClass=E");
+		Thread.sleep(2000);
+		get(13);
+
 	}
 	public static void SendKeys(WebDriver driver, WebElement element, int timeout, String value) {
 		WebDriverWait wait = new WebDriverWait(driver,timeout);
 		wait.until(ExpectedConditions.visibilityOf(element));
 		element.sendKeys(value);
+	}
+	
+	
+	
+	
+	public static void toBeclickable2(WebElement element,String data)
+	{
+		while(!element.getAttribute("innerText").toLowerCase().contains(data.toLowerCase()))
+		{
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	public static void toBeclickable(WebElement element)
+	{
+		WebDriverWait wait=new WebDriverWait(d1, 20);
+		wait.until(ExpectedConditions.elementToBeClickable(element));
+		
+	}
+	public static By get(String xpath,String data)
+	{
+		String rawXpath=xpath.replaceAll("%replacable%", data);
+		return By.xpath(rawXpath);
+	}
+	public static void get(int dep)
+	{
+		List<WebElement> departureFilghts=d1.findElements(By.xpath("//div[@class='splitVw-sctn pull-left']/child::div[2]/child::div"));
+		String[] Flightdetails=departureFilghts.get(dep).getAttribute("innerText").split("\\r?\\n");
+		System.out.println(Flightdetails[13]);
 	}
 }
