@@ -30,14 +30,24 @@ static WebDriver d1;
 private String departureDate=null;
 private String returnDate=null;
 	public static void main(String[] args) throws InterruptedException {
-		
-		
-	/*	WebElement li3 =d1.findElement(By.xpath("//ul//li[@id='react-autowhatever-1-section-0-item-0']"));
-		li3.click();*/
+		System.setProperty("webdriver.chrome.driver","E:\\chromedriver_win32\\chromedriver.exe");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--incognito");
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		d1 = new ChromeDriver(capabilities);
+		d1.get("https://www.makemytrip.com/");
+		d1.manage().window().maximize();
+		d1.manage().deleteAllCookies();
+		d1.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+		d1.get("https://www.makemytrip.com/flight/search?itinerary=DEL-BLR-21/05/2019_BLR-DEL-23/05/2019&tripType=R&paxType=A-1_C-0_I-0&intl=false&=&cabinClass=E");
+		/*
+		WebElement li3 =d1.findElement(By.xpath("//ul//li[@id='react-autowhatever-1-section-0-item-0']"));
+		li3.click();
 		Thread.sleep(2000);
 		//fromandtocity.sendKeys(Keys.TAB,"Bangalore");
 		
-		/*List<WebElement> li2 = d1.findElements(By.xpath("//ul[@class='react-autosuggest__suggestions-list']//li"));
+		List<WebElement> li2 = d1.findElements(By.xpath("//ul[@class='react-autosuggest__suggestions-list']//li"));
 		System.out.println(li2.size());
 		Actions a1 = new Actions(d1);
 		WebElement a2 = d1.findElement(By.xpath("//*[@id=\"departure\"]"));
@@ -68,8 +78,8 @@ private String returnDate=null;
 		l1.get(i).click();
 		break;
 		}
-		}
-		
+		}*/
+		Thread.sleep(2000);
 		WebElement e1 = d1.findElement(By.xpath("//div[@class='splitVw-footer-left ']//following::div[@class='pull-right marL5 text-right']//span[1]"));
 		String s1 = e1.getText();
 		s1 = s1.replaceAll(",", "");
@@ -93,7 +103,7 @@ private String returnDate=null;
 		Assert.assertEquals(totalvalue, finalresult, "Value is Mismatched");
 		
 		
-*/		
+	
 		
 		//d1.findElement(By.xpath("//*[@id=\"rt-domrt-jrny\"]/div[2]/div[2]/label/div[1]/span[1]")).click();
 		
@@ -141,7 +151,7 @@ private String returnDate=null;
 
 		}
 		*/
-		
+		/*
 		System.setProperty("webdriver.chrome.driver","E:\\chromedriver_win32\\chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--incognito");
@@ -151,7 +161,7 @@ private String returnDate=null;
 		d1.get("https://www.makemytrip.com/");
 		d1.manage().window().maximize();
 		d1.manage().deleteAllCookies();
-		d1.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+		d1.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);*/
 		/*d1.findElement(By.xpath("//a[@class='active makeFlex hrtlCenter column']")).click();
 		String li ="//li[contains(text(),'%replacable%')]/child::span";
 		d1.findElement(get(li,"Round Trip")).click();
