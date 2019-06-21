@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+
 public class Workshop {
 
 	public static void main(String[] args) {
@@ -32,7 +33,6 @@ public class Workshop {
         WebElement select = driver.findElement(By.name("CardType"));
         Select card = new Select(select);
         card.selectByVisibleText(" Visa ");
-        
         driver.findElement(By.name("CardNumber")).sendKeys("1234567");
         driver.findElement(By.name("CardDate")).sendKeys("12/6/2016");
        // driver.findElement(By.name("shipSameAsBill")).click();
